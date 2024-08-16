@@ -1,4 +1,5 @@
 ###JSONFormatDecryptor
+
 This is a small Python utility that allows you to save and read information in JSON format from a file whose contents are encrypted.
 
 The encryption is symmetric, so you must first generate a key for encryption. The module provides a function called **generate_password_txt**, which generates the key in a txt file in the root of the project. You can then retrieve it and use it in your project to encrypt and decrypt the content. Of course, after generating the key and copying it into your script, you must delete the file so that no one else can access it.
