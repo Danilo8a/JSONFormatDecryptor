@@ -24,6 +24,7 @@ class JSONFormatDecryptor:
         self.my_password = my_password
         self.my_decryptor = fernet.Fernet(self.my_password)
 
+    # Funcion para desencriptar el contenido de un archivo
     def decrypt_file(self, file_patch):
         # Comprobacion de que el archivo existe
         if not os.path.isfile(file_patch):
@@ -42,12 +43,20 @@ class JSONFormatDecryptor:
             self.last_json_decrypted = json.loads(content)
             return self.last_json_decrypted
 
+    # Funcion para encriptar el contenido en formato JSON a un archivo
     def encrypt_file(self, file_patch, content):
+        # Comprobacion de que el contenido sea correcto
+        if type(content) is not dict or type(content) is not list:
+            raise ValueError("The content to be encrypted must be in the correct JSON format: a list or a dictionary.")
+
         self.last_json_encrypted = content
+
         # Se convierte en una cadena de bytes el contenido
         json_content = json.dumps(content).encode()
+
         # Se encripta el contenido
         en_content = self.my_decryptor.encrypt(json_content)
+
         # Se guarda en un documento el contenido
         with open(file_patch, 'w') as file:
             file.write(en_content.decode())
