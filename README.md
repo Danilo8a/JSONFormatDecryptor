@@ -1,4 +1,4 @@
-#JSONFormatDecryptor
+# JSONFormatDecryptor
 
 This is a small Python utility that allows you to save and read information in JSON format from a file whose contents are encrypted.
 
