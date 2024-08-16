@@ -73,4 +73,3 @@ if __name__ == "__main__":
     # my_decrypter.encrypt_file('encriptado.txt', to_encrypt)
     decrypt = my_decrypter.decrypt_file('encriptado.txt')
     print(decrypt)
-    print(type(decrypt))
